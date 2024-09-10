@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+        <title>YOU HAVE BEEN HACKED!!!</title>
+        <style>
+            body {
+                background-color: #000;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .hacked {
+                font-size: 48px;
+                font-weight: bold;
+                margin-top: 20%;
+                animation: blink 1s infinite;
+            }
+
+            .message {
+                font-size: 24px;
+                margin-top: 20px;
+                animation: fade-in 2s;
+            }
+
+            @keyframes blink {
+                0% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .glitch {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                z-index: -1;
+                animation: glitch 2s infinite;
+            }
+
+            @keyframes glitch {
+                0% {
+                    transform: skewX(0deg);
+                }
+                20% {
+                    transform: skewX(10deg);
+                }
+                40% {
+                    transform: skewX(-10deg);
+                }
+                60% {
+                    transform: skewX(5deg);
+                }
+                80% {
+                    transform: skewX(-5deg);
+                }
+                100% {
+                    transform: skewX(0deg);
+                }
+            }
+
+            .scanlines {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(
+                    to bottom,
+                    #000 50%,
+                    #111 50%
+                );
+                background-size: 100% 10px;
+                z-index: -2;
+                animation: scanlines 2s infinite;
+            }
+
+            @keyframes scanlines {
+                0% {
+                    background-position: 0 0;
+                }
+                100% {
+                    background-position: 0 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="glitch"></div>
+        <div class="scanlines"></div>
+        <div class="hacked">YOU HAVE BEEN HACKED!!!</div>
+        <div class="message">
+            Your system has been compromised. Please disconnect from the
+            internet and seek assistance immediately.
+        </div>
+    </body>
+</html>
