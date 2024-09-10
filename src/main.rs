@@ -10,6 +10,19 @@ fn handle_stream(mut stream: TcpStream) {
 
     let get = b"GET / HTTP/1.1\r\n";
 
+
+    let (status_line,filename) =
+        if buf.starts_with(b"GET / HTTP/1.1\r\n"){
+            ("HTTP/1.1 200 OK\r\n","src/index.html")
+        }else{
+            ("HTTP/1.1 404 NOT FOUND\r\n","src/404.html")
+        };
+
+    let content = fs::read_to_string(filename).expect("Cannot HTML read file");
+    let response = format!("{}Content-Length: {}\r\n\r\n{}",status_line,content.len(),content);
+    stream.write(response.as_bytes()).expect("Cannot write to stream");
+    stream.flush().expect("Cannot flush stream");
+    /*
     if buf.starts_with(get) {
 
     let content = fs::read_to_string("src/index.html").expect("Cannot HTML read file");
@@ -27,6 +40,7 @@ fn handle_stream(mut stream: TcpStream) {
             .expect("Cannot write to stream");
         stream.flush().expect("Cannot flush stream");
     }
+    */
 }
 
 fn main() {
