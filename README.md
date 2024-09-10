@@ -1,4 +1,3 @@
-Here is the README with a mono nerd font:
 
 **<font face="Fira Code">README</font>**
 =====================================
